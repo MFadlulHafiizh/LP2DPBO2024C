@@ -1,6 +1,9 @@
 /*Saya Muhammad Muhammad Fadlul Hafiizh [2209889] mengerjakan soal latprak_2 dalam mata kuliah DPBO.
 untuk keberkahanNya maka saya tidak melakukan kecurangan seperti yang telah dispesifikasikan, Aamiin */
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 import java.util.stream.IntStream;
 
 import models.Shirt;
@@ -10,7 +13,7 @@ import models.Shirt;
  */
 public class Main {
     //untuk mencetak table
-    private static void printTable(Shirt... shirts){
+    private static void printTable(List<Shirt> shirts){
         int[] minLenColumn = {9, 4, 5, 4, 8, 6, 6, 5, 5}; //menampung panjang minimal lebar setiap kolom, ini nilai default dari panjang karakter judul tabel
         for (Shirt shirt : shirts) { //mencari nilai karakter terpanjang pada setiap kolom
             if (shirt.getIdProduct().length() > minLenColumn[0]) {
@@ -82,47 +85,51 @@ public class Main {
     }
     public static void main(String[] args) {
         // instansiasi tiga buah kelas cucu
-        Shirt shirt1 = new Shirt();
-        Shirt shirt2 = new Shirt();
-        Shirt shirt3 = new Shirt();
+        int jmlShirts = 0;
+        List<Shirt> lShirts = new ArrayList<>();
+        Scanner scShirt = new Scanner(System.in);
+        System.out.print("Masukan jumlah data yang ingin diinputkan: ");
+        jmlShirts = scShirt.nextInt(); //input jumlah data yg diinginkan
+        while (jmlShirts < 3) { //selama masukan jumlah shirt kurang dari 3 maka minta inputan ulang
+            System.out.print("Jumlah minimal data yang diinputkan 3, silahkan inputkan ulang jumlah : ");
+            jmlShirts = scShirt.nextInt();
+        }
+        scShirt.nextLine(); //bersihkan input buffer karena perbedaan input type data
+        
+        for (int i = 0; i < jmlShirts; i++) { //input data shirt sebanyak jml yang diinputkan sebelumnya
+            Shirt shirt = new Shirt();
+            System.out.print("Masukan ID Produk: ");
+            shirt.setIdProduct(scShirt.nextLine());
 
-        //shirt product 1
-        shirt1.setIdProduct("1MDC1");
-        shirt1.setName("Maternal pocket shirt");
-        shirt1.setBrand("Maternal");
-        shirt1.setPrice(150000);
-        shirt1.setSize("M");
-        shirt1.setMaterial("Combed 24s");
-        shirt1.setGender("Unisex");
-        shirt1.setColor("Red");
-        shirt1.setSleeveType("Short");
+            System.out.print("Masukan nama produk: ");
+            shirt.setName(scShirt.nextLine());
 
-        //shirt product 2
-        shirt2.setIdProduct("1MDC2");
-        shirt2.setName("Oversized Series");
-        shirt2.setBrand("Good bye ex");
-        shirt2.setPrice(185000);
-        shirt2.setSize("L");
-        shirt2.setMaterial("Combed 60s");
-        shirt2.setGender("Unisex");
-        shirt2.setColor("Black");
-        shirt2.setSleeveType("Short Magyar sleeve");
+            System.out.print("Masukan brand produk: ");
+            shirt.setBrand(scShirt.nextLine());
 
-        //shirt product 3
-        shirt3.setIdProduct("1MDC3");
-        shirt3.setName("Wormhole Essential");
-        shirt3.setBrand("Wormhole");
-        shirt3.setPrice(320000);
-        shirt3.setSize("L");
-        shirt3.setMaterial("American Apparel Cotton");
-        shirt3.setGender("Male");
-        shirt3.setColor("Navy");
-        shirt3.setSleeveType("Short");
+            System.out.print("Masukan harga produk: ");
+            shirt.setPrice(scShirt.nextInt());
+            scShirt.nextLine(); //bersihkan input buffer
+
+            System.out.print("Masukan ukuran: ");
+            shirt.setSize(scShirt.nextLine());
+
+            System.out.print("Masukan bahan: ");
+            shirt.setMaterial(scShirt.nextLine());
+
+            System.out.print("Masukan jenis peruntukan gender: ");
+            shirt.setGender(scShirt.nextLine());
+
+            System.out.print("Masukan warna : ");
+            shirt.setColor(scShirt.nextLine());
+
+            System.out.print("Jenis Sleeve: ");
+            shirt.setSleeveType(scShirt.nextLine());
+            lShirts.add(shirt);
+        }
 
         //masukan shirt kedalam fungsi print table
-        printTable(shirt1,
-                    shirt2,
-                    shirt3);
+        printTable(lShirts);
 
     }
 }
