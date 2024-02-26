@@ -1,5 +1,6 @@
 <?php
-
+/*Saya Muhammad Muhammad Fadlul Hafiizh [2209889] mengerjakan soal latprak_2 dalam mata kuliah DPBO.
+untuk keberkahanNya maka saya tidak melakukan kecurangan seperti yang telah dispesifikasikan, Aamiin */
 require("Shirt.php");
 
 //instansiasi minimal 3 objek cucu
